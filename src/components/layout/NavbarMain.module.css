@@ -1,0 +1,31 @@
+.Container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  background-color: #e67e22;
+
+  font-size: 2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1.2rem 2.4rem;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+.Container a {
+  text-decoration: none;
+  color: #fff;
+  line-height: 3.2rem;
+}
+.Container a:hover {
+  background-color: #cf711f;
+}
+
+.scrolled{
+   background-color:#e67d229a;
+   backdrop-filter: blur(10px);
+
+}

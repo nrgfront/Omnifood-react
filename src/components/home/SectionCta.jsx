@@ -13,9 +13,9 @@ function SectionCta() {
               meal is on us!
             </p>
 
-            <form className={Style["cta-form"]} name="sign-up" netlify>
+            <form className={Style["cta-form"]} name="sign-up">
               <div>
-                <label for="full-name">Full Name</label>
+                <label htmlFor="full-name">Full Name</label>
                 <input
                   id="full-name"
                   type="text"
@@ -26,7 +26,7 @@ function SectionCta() {
               </div>
 
               <div>
-                <label for="email">Email address</label>
+                <label htmlFor="email">Email address</label>
                 <input
                   id="email"
                   type="email"
@@ -37,7 +37,7 @@ function SectionCta() {
               </div>
 
               <div>
-                <label for="select-where">Where did you hear from us?</label>
+                <label htmlFor="select-where">Where did you hear from us?</label>
                 <select id="select-where" name="select-where" required>
                   <option value="">Please choose one option:</option>
                   <option value="friends">Friends and family</option>

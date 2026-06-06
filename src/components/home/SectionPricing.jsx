@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import Style from "./SectionPricing.module.css";
+import { Link } from "react-router-dom";
+import MealContext from "../../context/MealContext";
 
 function SectionPricing() {
+  const {planType,setPlanType}= useContext(MealContext)
   return (
     <section className={Style["section-pricing"]} id="pricing">
       <div className="container">
@@ -50,9 +54,8 @@ function SectionPricing() {
             </li>
           </ul>
           <div className={Style["plan-sing-up"]}>
-            <a href="#" className="btn btn--full">
-              Start eating well
-            </a>
+             <Link to="/meals" className="btn btn--full" onClick={()=> setPlanType(7)}>Start eating well</Link>
+        
           </div>
         </div>
 
@@ -103,9 +106,8 @@ function SectionPricing() {
             </li>
           </ul>
           <div className={Style["plan-sing-up"]}>
-            <a href="#" className="btn btn--full">
-              Start eating well
-            </a>
+            <Link to="/meals" className="btn btn--full" onClick={()=> setPlanType(14)}>Start eating well</Link>
+          
           </div>
         </div>
       </div>

@@ -1,24 +1,19 @@
-import { Link, NavLink } from "react-router-dom";
 import Style from "./Navbar.module.css";
 import Logo from "./Logo";
 
+import { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
+
 function Navbar() {
+const[isOpen,setIsOpen]= useState(false)
+console.log(isOpen)
   return (
-    // <nav>
-    //     <Logo/>
-    //     <ul>
-    //         <li  ><NavLink className={({isActive})=> isActive? "cta-secondary active" :"cta-secondary" } to="/">Home</NavLink></li>
-    //         <li ><NavLink className="cta-secondary" to="/books">books</NavLink></li>
-    //         <li ><NavLink className="cta-secondary" to="/favorites">Favorites</NavLink></li>
+  
 
-    //     </ul>
-
-    // </nav>
-
-    <header className={Style.header}>
+    <header className={`${Style.header}  `}>
       <Logo />
 
-      <nav className="main-nav">
+      <nav className={`${Style.mainNav} ${isOpen ? Style.open : ""}`}>
         <ul className={Style["main-nav-list"]}>
           <li>
             <a className={Style["main-nav-link"]} href="#how">
@@ -40,28 +35,31 @@ function Navbar() {
               Pricing
             </a>
           </li>
-          <Link to={"/foods"}>
+          
             <li>
-              <a
+              <Link to={"/meals"}
                 className={`${Style["main-nav-link"]} ${Style["nav-cta"]}`}
-                href="#cta"
+                
               >
                 Try for free
-              </a>
+              </Link>
             </li>
-          </Link>
+          
         </ul>
       </nav>
 
-      <button className={Style["btn-mobile-nav"]}>
-        <ion-icon
-          className={Style["icon-mobile-nav"]}
-          name="menu-outline"
-        ></ion-icon>
-        <ion-icon
+      <button className={Style["btn-mobile-nav"]} onClick={()=> setIsOpen(prev=> !prev)}>
+        {
+          isOpen? <ion-icon
           className={Style["icon-mobile-nav"]}
           name="close-outline"
-        ></ion-icon>
+        ></ion-icon> : <ion-icon
+          className={Style["icon-mobile-nav"]}
+          name="menu-outline"
+        ></ion-icon> 
+        }
+       
+       
       </button>
     </header>
   );

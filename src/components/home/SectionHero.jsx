@@ -14,11 +14,11 @@ function SectionHero() {
             healthy again. Tailored to your personal tastes and nutritional
             needs.
           </p>
-          <Link to={"/foods"}>
-            <a href="#cta" className="btn btn--full margin-right-sm">
+         
+            <Link to={"/meals"} className="btn btn--full margin-right-sm">
               Start eating well
-            </a>
-          </Link>
+            </Link>
+         
 
           <a href="#how" className="btn btn--outline">
             Learn more &darr;
@@ -57,8 +57,8 @@ function SectionHero() {
         </div>
         <div className={Style["hero-img-box"]}>
           <picture>
-            <source srcset="/img/hero.webp" type="image/webp" />
-            <source srcset="/img/hero-min.png" type="image/png" />
+            <source srcSet="/img/hero.webp" type="image/webp" />
+            <source srcSet="/img/hero-min.png" type="image/png" />
 
             <img
               src="/img/hero-min.png"

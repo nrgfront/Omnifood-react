@@ -10,7 +10,7 @@ function SectionHow() {
           </h2>
         </div>
 
-        <div className="container grid grid--2-cols grid--center-v">
+        <div className={`container grid grid--2-cols grid--center-v ${Style.stepContainer}`}>
           {/* <!-- STEP 01 --> */}
           <div className={Style["step-text-box"]}>
             <p className={Style["step-number"]}>01</p>

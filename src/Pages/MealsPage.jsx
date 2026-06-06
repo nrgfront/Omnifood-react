@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Style from "./MealsPage.module.css";
 import meals from "../../data/meals";
 import MealCard from "../components/meals/MealCard";
+
 
 
 import { BsFire} from "react-icons/bs";
@@ -9,11 +10,12 @@ import { LuPartyPopper } from "react-icons/lu";
 import { RiSearch2Line } from "react-icons/ri";
 import PlannerCard from "../components/meals/PlannerCard";
 import { Link } from "react-router-dom";
+import MealContext, { MealProvider } from "../context/MealContext";
 
 function MealsPage() {
   const [selectedDiet, setSelectedDiet] = useState("all");
   const [search, setSearch] = useState("");
-    const [selectedMeals, setSelectedMeals] = useState([]);  
+    const {selectedMeals, setSelectedMeals,totalCalories,handleAddMeals,planType} =useContext(MealContext);  
 
   const filteredMeals = meals.filter((meal) => {
     const machesDiet = selectedDiet === "all" || meal.diet === selectedDiet;
@@ -25,21 +27,10 @@ function MealsPage() {
     return machesDiet && machesSearch;
   });
 
-  function handleAddMeals(meal) {
-    const isSelected = selectedMeals.some((item) => item.id === meal.id);
-    if (isSelected) {
-      setSelectedMeals((prev) => prev.filter((item) => item.id !== meal.id));
-    } else {
-      setSelectedMeals((prev) => [...prev, meal]);
-    }
-  }
- 
-  const totalCalories = selectedMeals.reduce(
-    (sum, meal) => sum + meal.calories,
-    0,
-  );
 
-  const mealsLimit = 7;
+ 
+
+  const mealsLimit = planType;
   const progress = (selectedMeals.length / mealsLimit) * 100;
 
   return (
@@ -73,6 +64,9 @@ function MealsPage() {
         </div>
         <div className={Style.searchBox}>
           <RiSearch2Line className={Style.iconSearch} />
+          {
+            
+          }
           <input
             className={Style.searchInput}
             value={search}
