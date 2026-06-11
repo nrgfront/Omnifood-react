@@ -1,20 +1,3 @@
-:root {
-  --primary: #6366f1; /*  بنفش اصلی*/
-  --primary-light: #eff0fe; /* بک‌گراند */
-  --primary-mid: #c1c2f9;
-  --primary-dark: #4f52c1; /* هاور دکمه */
-
-  --text: #1f2937; /* متن اصلی */
-  --subtle: #6b7280; /* متن فرعی */
-
-  --bg: #eff0fe;
-
-  --card: #fff;
-
-  --border: #e5e7eb;
-  --border-active: #cdcfd3;
-  --shadow: 0 0.2rem 0.8rem rgba(0, 0, 0, 0.08);
-}
 /*
 
 
@@ -77,6 +60,49 @@ Medium: 11px
 2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
 */
 
+:root {
+  --primary: #e67e22; /*دکمه*/
+  --shade1: #cf711f; /*هاور دکمه متن خاص*/
+  --shade2: #45260a; /*دکمه مهم */
+
+  --tint1: #fdf2e9; /*بک گراند هدر اینپوت*/
+  --tint2: #fae5d3;
+  --tint3: #eb984e;
+
+  --bg: #fff;
+
+  --text: #555; /*  ایکون متن اصلی */
+  --textHeader: #333; /* متن فرعی */
+--text-light: #999;
+--card: #fff
+
+  --shadow: 0 0.2rem 0.8rem rgba(0, 0, 0, 0.08);
+
+
+}
+
+
+.dark {
+  --primary: #f08c3a;
+  --shade1: #ff9f4a;
+  --shade2: #ffd8b1;
+
+  --tint1: #1b1b1b;
+  --tint2: #242424;
+  --tint3: #333333;
+
+  --bg: #121212;
+
+  --text: #b3b3b3;
+  --textHeader: #f5f5f5;
+  --text-light: #b9b9b9;
+  --card: #1b1b1b;
+
+  --shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.35);
+}
+
+
+
 * {
   padding: 0;
   margin: 0;
@@ -99,17 +125,21 @@ body {
   font-family: "Rubik", sans-serif;
   line-height: 1;
   font-weight: 400;
-  color: #555;
+ 
 
   /* Only works if there is nothing absolutely positioned in relation to body */
   overflow-x: hidden;
   padding-top: 8rem;
+  
 }
 
 /**************************/
 /* GENRAL REUSABLE COMPONENTS */
 /**************************/
-
+.app{
+   background-color: var(--bg);
+   color: var(--text);
+}
 .container {
   /* 1140px */
   max-width: 120rem;
@@ -157,9 +187,7 @@ body {
 .heading-secondary,
 .heading-tertiary {
   font-weight: 700;
-  color: #333;
-  /* color: #45260a; */
-  /* color: #343a40; */
+  color: var(--textHeader);
   letter-spacing: -0.5px;
 }
 
@@ -185,7 +213,7 @@ body {
   display: block;
   font-size: 1.6rem;
   font-weight: 500;
-  color: #cf711f;
+  color: var(--shade1);
   text-transform: uppercase;
   margin-bottom: 1.6rem;
   letter-spacing: 0.75px;
@@ -214,47 +242,47 @@ body {
 .btn--full,
 .btn--full:link,
 .btn--full:visited {
-  background-color: #e67e22;
-  color: #fff;
+  background-color: var(--primary);
+  color: var(--bg);
 }
 
 .btn--full:hover,
 .btn--full:active {
-  background-color: #cf711f;
+  background-color: var(--shade1);
 }
 
 .btn--outline:link,
 .btn--outline:visited {
-  background-color: #fff;
-  color: #555;
+  background-color: var(--bg);
+  color: var(--textHeader);
 }
 
 .btn--outline:hover,
 .btn--outline:active {
-  background-color: #fdf2e9;
+  background-color: var(--tint1);
 
-  /* border: 3px solid #fff; */
+  /* border: 3px solid var(--bg); */
 
   /* Trick to add border inside */
-  box-shadow: inset 0 0 0 3px #fff;
+  box-shadow: inset 0 0 0 3px var(--bg);
 }
 
 .btn--form {
-  background-color: #45260a;
-  color: #fdf2e9;
+  background-color: var(--shade2);
+  color: var(--bg);
   align-self: end;
   padding: 1.2rem;
 }
 
 .btn--form:hover {
-  background-color: #fff;
-  color: #555;
+  background-color: var(--shade1);
+ 
 }
 
 .link:link,
 .link:visited {
   display: inline-block;
-  color: #e67e22;
+  color: var(--primary);
   text-decoration: none;
   border-bottom: 1px solid currentColor;
   padding-bottom: 2px;
@@ -263,7 +291,7 @@ body {
 
 .link:hover,
 .link:active {
-  color: #cf711f;
+  color: var(--shade1);
   border-bottom: 1px solid transparent;
 }
 
@@ -285,14 +313,14 @@ body {
 .list-icon {
   width: 3rem;
   height: 3rem;
-  color: #e67e22;
+  color: var(--primary);
 }
 
 *:focus {
   outline: none;
-  /* outline: 4px dotted #e67e22; */
+  /* outline: 4px dotted var(--primary); */
   /* outline-offset: 8px; */
-  box-shadow: 0 0 0 0.8rem rgba(230, 125, 34, 0.5);
+  box-shadow: 0 0 0 0.5rem rgba(230, 125, 34, 0.5);
 }
 
 /* HELPER/SETTINGS CLASSES */
@@ -311,11 +339,13 @@ body {
 strong {
   font-weight: 500;
 }
-.message{
+.message {
   font-size: 1.8rem;
   font-weight: 600;
-  
 }
+
+
+
 
 /******************************/
 /* BELOW 1344px (smaller desktops) */

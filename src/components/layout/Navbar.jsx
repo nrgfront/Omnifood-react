@@ -1,11 +1,13 @@
 import Style from "./Navbar.module.css";
 import Logo from "./Logo";
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import MealContext from "../../context/MealContext";
 
 function Navbar() {
 const[isOpen,setIsOpen]= useState(false)
+const {darkMode}= useContext(MealContext)
 console.log(isOpen)
   return (
   
@@ -13,7 +15,7 @@ console.log(isOpen)
     <header className={`${Style.header}  `}>
       <Logo />
 
-      <nav className={`${Style.mainNav} ${isOpen ? Style.open : ""}`}>
+      <nav className={`${Style.mainNav} ${darkMode? Style.mainNavDark : ""} ${isOpen ? Style.open : ""}`}>
         <ul className={Style["main-nav-list"]}>
           <li>
             <a className={Style["main-nav-link"]} href="#how">

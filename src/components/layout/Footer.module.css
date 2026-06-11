@@ -21,6 +21,9 @@
 .logo {
   height: 2.2rem;
 }
+.darkLogo{
+   filter:brightness(0) invert(1);
+}
 
 .social-links {
   list-style: none;

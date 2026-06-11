@@ -13,7 +13,7 @@ function MealCard({ meal,selectedMeals,onAddMeals,isSelected,mealsLimit }) {
         <h2 className={Style.mealTitle}>{meal.title}</h2>
         <div className={Style.mealAttributes}>
           <p>{meal.calories} calories</p>
-          <p>{meal.protein}g protein</p>
+          
         </div>
         <button className={`btn ${isSelected? Style.removeMeal: Style.addMeal  } `} onClick={()=> onAddMeals(meal)} disabled={!isSelected && selectedMeals.length>=mealsLimit}>{isSelected ? "✔ Added" : "+ Add to Plan"}     </button>
       </div>

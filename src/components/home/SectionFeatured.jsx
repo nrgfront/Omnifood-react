@@ -1,11 +1,14 @@
+import { useContext } from "react"
 import Style from "./SectionFeatured.module.css"
+import MealContext from "../../context/MealContext"
 
 function SectionFeatured() {
+  const {darkMode}= useContext(MealContext)
     return (
          <section className={Style["section-featured"]}>
         <div className="container">
           <h2 className={Style["heading-featured-in"]}>As featured in</h2>
-          <div className={Style["logos"]}>
+          <div className={`${Style["logos"]} ${darkMode? Style.darkLogos: ""}`}>
             <img src="/img/logos/techcrunch.png" alt="Techcrunch logo" />
             <img
               src="/img/logos/business-insider.png"

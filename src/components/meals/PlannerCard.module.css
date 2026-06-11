@@ -1,5 +1,5 @@
 .plannerCard{
-    background-color: #fff;
+    background-color: var(--card);
     border-radius: 16px;
     padding: 2.4rem;
     box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.06);
@@ -10,7 +10,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 1.2rem 0;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--tint2);
    
   
 }

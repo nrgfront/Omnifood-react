@@ -1,6 +1,6 @@
 
 .section-testimonials {
-  background-color: #fdf2e9;
+  background-color: var(--tint1);
   display: grid;
   grid-template-columns: 55fr 45fr;
   align-items: center;
@@ -31,7 +31,7 @@
 
 .testimonial-name {
   font-size: 1.6rem;
-  color: #6f6f6f;
+  color: var(--text-light);
 }
 
 .gallery {

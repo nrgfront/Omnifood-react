@@ -1,13 +1,16 @@
+import { useContext } from "react";
 import Style from "./Footer.module.css";
 import Logo from "./Logo";
+import MealContext from "../../context/MealContext";
 function Footer() {
+  const {darkMode}= useContext(MealContext)
   return (
     <footer className={Style["footer"]}>
       <div className={`${"container"} ${"grid"} ${Style["grid--footer"]}`}>
         <div className={Style["logo-col"]}>
           <a href="#" className={Style["footer-logo"]}>
             <img
-              className={Style["logo"]}
+              className={`${Style["logo"]} ${darkMode? Style.darkLogo : ""}`}
               alt="Omnifood logo"
               src="/img/omnifood-logo.png"
             />

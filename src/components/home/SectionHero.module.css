@@ -1,6 +1,7 @@
 
+
 .section-hero {
-  background-color: #fdf2e9;
+  background-color: var(--tint1);
   padding: 4.8rem 0 9.6rem 0;
 }
 
@@ -40,7 +41,7 @@
   width: 4.8rem;
   border-radius: 50%;
   margin-right: -1.6rem;
-  border: 3px solid #fdf2e9;
+  border: 3px solid var(--tint1);
 }
 
 .delivered-imgs img:last-child {
@@ -53,7 +54,7 @@
 }
 
 .delivered-text span {
-  color: #cf711f;
+  color: var(--shade1);
   font-weight: 700;
 }
 

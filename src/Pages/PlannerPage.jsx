@@ -57,7 +57,7 @@ function PlannerPage() {
               </p>
               <span className={Style.dietTag}>{meal.diet}</span>
               <button
-                className={`btn ${Style.btnRemove}`}
+                className={`btn  ${Style.btnRemove}`}
                 onClick={() => handleAddMeals(meal)}
               >
                 Remove
@@ -85,7 +85,7 @@ function PlannerPage() {
                 <LuPartyPopper className={Style.iconParty} /> Your meal plan is
                 ready and will be delivered soon!{" "}
               </p>
-              <button onClick={()=> toggleModal(false)} className="btn btn--full">x</button>
+              <button onClick={()=> toggleModal(false)} className="btn btn--full">X</button>
             </div>
           </div>
         )}
