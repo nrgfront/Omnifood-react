@@ -33,17 +33,6 @@ nutriScore: meal.spoonacularScore.toFixed(1)
   };
 });
 
-// const formatedMeals= rawMeals[0].results.map((meal)=>{
-//     const protein= meal.nutrition?.nutrients.find((n)=> n.name==="Protein")?.amount || 0;
 
-//     return {
-//         title: meal.title,
-//         protein
-//     }
-// })
-
-// console.log(
-//   formatedMeals
-// )
 
 export default formatedMeals;

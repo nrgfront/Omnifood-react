@@ -321,6 +321,7 @@ body {
   /* outline: 4px dotted var(--primary); */
   /* outline-offset: 8px; */
   box-shadow: 0 0 0 0.5rem rgba(230, 125, 34, 0.5);
+  border-radius: 0.8rem;
 }
 
 /* HELPER/SETTINGS CLASSES */
@@ -344,7 +345,11 @@ strong {
   font-weight: 600;
 }
 
-
+.icon{
+  font-size: 2rem;
+  color: var(--primary);
+  font-weight: 700;
+}
 
 
 /******************************/

@@ -1,4 +1,4 @@
-.Container {
+.container {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -15,12 +15,12 @@
   transition: all 0.3s ease;
   text-transform: uppercase;
 }
-.Container a {
+.container a {
   text-decoration: none;
   color: #fff;
   line-height: 3.2rem;
 }
-.Container a:hover {
+.container a:hover {
   background-color: #cf711f;
 }
 
@@ -28,4 +28,32 @@
    background-color:#e67d229a;
    backdrop-filter: blur(10px);
 
+}
+.mainNavBtn{
+  display: inline-block;
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 600;
+    padding: 1.6rem 3.2rem;
+    border-radius: 9px;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+   
+    transition: all 0.3s;
+}
+
+/******************************/
+/* BELOW 544px (ُPhones) */
+/******************************/
+
+@media (max-width: 34em) {
+  .container {
+    
+    
+  }
+  .mainNavBtn{
+    font-size: 1.6rem;
+    padding: 1.2rem 1.8rem;
+  }
 }

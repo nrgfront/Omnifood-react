@@ -13,7 +13,7 @@ function PlannerCard({ selectedMeals,onAddMeals,totalCalories }) {
       
         <div key={meal.id} className={Style.plannerMeal}>
           <p >{meal.title}</p>
-          <button className={`btn ${Style.btnRemove}`} onClick={()=>onAddMeals(meal)}>x</button>
+          <button className={`btn ${Style.btnRemove}`} onClick={()=>onAddMeals(meal)}>X</button>
         </div>
         
        

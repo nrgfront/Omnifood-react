@@ -6,28 +6,23 @@ import { Link } from "react-router-dom";
 import MealCard from "../components/meals/MealCard";
 import PlannerCard from "../components/meals/PlannerCard";
 import MealContext, { MealProvider } from "../context/MealContext";
- import formatedMeals from "../../data/formatedMeals.jsx"
+ import { transformedMeals } from "../../data/transformedMeals";
 
 import { BsFire } from "react-icons/bs";
 import { LuPartyPopper } from "react-icons/lu";
 import { RiSearch2Line } from "react-icons/ri";
-
- import rawMeals from "../../data/rawMealsBackUp.jsx";
-
-// import * as test from "../../data/meal";
-
-console.log(rawMeals);
- console.log(formatedMeals);
+import { FaRegFileAlt } from "react-icons/fa";
+// import formatedMeals from "../../data/formatedMeals";
 
 
 
 const API_KEY=import.meta.env.VITE_SPOONACULAR_API_KEY
 
-// console.log(formattedMeals);
 
 function MealsPage() {
   const [selectedDiet, setSelectedDiet] = useState("all");
   const [search, setSearch] = useState("");
+   const [selectMeal,setSelectMeal]= useState(null)
   const {
     selectedMeals,
     setSelectedMeals,
@@ -36,10 +31,10 @@ function MealsPage() {
     planType,
   } = useContext(MealContext);
 
-  const [meals, setMeals] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
 
+ 
+  // const [isLoading, setIsLoading] = useState(false);
+  // const [error, setError] = useState(null);
 
 
 // useEffect(()=> {
@@ -72,25 +67,29 @@ function MealsPage() {
 // },[])
 
 
-  // const filteredMeals = formattedMeals?.filter((meal) => {
-  //   const machesDiet = selectedDiet === "all" || meal.diet.includes(selectedDiet) === selectedDiet;
+  const filteredMeals = transformedMeals[0]?.filter((meal) => {
+    const machesDiet = selectedDiet === "all" || meal.diets.includes(selectedDiet);
 
-  //   const machesSearch = meal.title
-  //     .toLowerCase()
-  //     .includes(search.toLowerCase());
+    const machesSearch = meal.title
+      ?.toLowerCase()
+      .includes(search.toLowerCase()) || false;
 
-  //   return machesDiet && machesSearch;
-  // } );
+    return machesDiet && machesSearch;
+  } );
 
   const mealsLimit = planType;
   const progress = (selectedMeals.length / mealsLimit) * 100;
-// console.log(rawMeals);
 
-// console.log("MEALS:", rawMeals);
-// window.rawMeals = rawMeals;
 
-  if (isLoading) return <p>Loading...</p>;
-if (error) return <p>{error}</p>;
+// console.log(selectedDiet);
+// console.log(filteredMeals[0]?.diets);
+// console.log("all meals:", transformedMeals[0].length);
+// console.log("filtered meals:", filteredMeals.length)
+// console.log(filteredMeals.map((meal)=> meal.title))
+
+
+//   if (isLoading) return <p>Loading...</p>;
+// if (error) return <p>{error}</p>;
   return (
     <div className={Style.sectionMealsPage}>
       <div className={Style.mealBar}>
@@ -103,21 +102,39 @@ if (error) return <p>{error}</p>;
           </button>
           <button
             className={` btn ${Style.filterBtn} ${selectedDiet === "vegan" ? Style.activeFilter : ""}`}
-            onClick={() => setSelectedDiet("vegan")}
+            onClick={() => setSelectedDiet("Vegan")}
           >
-            vegan
+            Vegan
           </button>
           <button
-            className={` btn ${Style.filterBtn} ${selectedDiet === "keto" ? Style.activeFilter : ""}`}
-            onClick={() => setSelectedDiet("keto")}
+            className={` btn ${Style.filterBtn} ${selectedDiet === "Vegeterian" ? Style.activeFilter : ""}`}
+            onClick={() => setSelectedDiet("Vegeterian")}
           >
-            keto
+            Vegeterian
           </button>
           <button
-            className={` btn ${Style.filterBtn} ${selectedDiet === "high-protein" ? Style.activeFilter : ""}`}
-            onClick={() => setSelectedDiet("high-protein")}
+            className={` btn ${Style.filterBtn} ${selectedDiet === "Gluten-Free" ? Style.activeFilter : ""}`}
+            onClick={() => setSelectedDiet("Gluten-Free")}
           >
-            high-protein
+            Gluten-Free
+          </button>
+           <button
+            className={` btn ${Style.filterBtn} ${selectedDiet === "Dairy-Free" ? Style.activeFilter : ""}`}
+            onClick={() => setSelectedDiet("Dairy-Free")}
+          >
+            Dairy-Free
+          </button>
+           <button
+            className={` btn ${Style.filterBtn} ${selectedDiet === "Paleo" ? Style.activeFilter : ""}`}
+            onClick={() => setSelectedDiet("Paleo")}
+          >
+            Paleo
+          </button>
+           <button
+            className={` btn ${Style.filterBtn} ${selectedDiet === "High-Protein" ? Style.activeFilter : ""}`}
+            onClick={() => setSelectedDiet("High-Protein")}
+          >
+            High-Protein
           </button>
         </div>
         <div className={Style.searchBox}>
@@ -177,10 +194,10 @@ if (error) return <p>{error}</p>;
       />
 
       <div className={Style.mealsContainer}>
-        {meals.length === 0 ? (
+        {filteredMeals.length === 0 ? (
           <p className="message">No meals found</p>
         ) : (
-          meals.map((meal) => {
+          filteredMeals.map((meal) => {
             const isSelected = selectedMeals.some(
               (item) => item.id === meal.id,
             );
@@ -188,17 +205,39 @@ if (error) return <p>{error}</p>;
               <MealCard
                 key={meal.id}
                 meal={meal}
-                selectedMeals={selectedMeals}
+               setSelectMeal={setSelectMeal}
                 onAddMeals={handleAddMeals}
                 isSelected={isSelected}
                 mealsLimit={mealsLimit}
               />
             );
           })
-        )}
+        )
+
+        }
+         {selectMeal ? <div className={Style.modalMealContainer}>
+
+<div className={Style.overlay} onClick={()=> setSelectMeal(null)}>
+  <div className={Style.modal} onClick={(e)=>e.stopPropagation()}>
+    <div className={Style.modalHeader}>
+       <h3> {selectMeal.title}</h3>
+       <button className={Style.closeBtn} onClick={()=> setSelectMeal(null)} >X</button>
+    </div>
+    <div className={Style.summaryContainer} >
+ <FaRegFileAlt className={Style.summaryIcon}/>
+   <p className={Style.summary}>{selectMeal.summary}</p>
+    </div>
+ 
+   <div className={Style.list}>
+    <h4>Ingredients</h4>
+   <ul> {selectMeal.ingredients.map((n,i)=>(<li className="list-item" key={i}>{n}</li>) )}</ul></div>
+   
+  </div>
+</div>
+      </div> : ""}
       </div>
-      <Link to="/planner" className="btn btn--full">
-        view my plan
+      <Link to="/planner" className={`btn btn--full ${Style.btnPlan}`}>
+       ({selectedMeals.length}) meals selected
       </Link>
     </div>
   );

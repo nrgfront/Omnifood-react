@@ -22,7 +22,14 @@ function PlannerPage() {
   function toggleModal(value) {
     setShowModal(value)
   }
-
+ const dietColors={
+    Vegan: "#94D82D",
+    Vegeterian:"#51CF66",
+ "High-Protein": "#fa5252",
+  "Gluten-Free": "#ffa94d",
+  "Dairy-Free": "#dee2e6",
+  Paleo: "#FFD43B",
+  }
   return (
     <div className={Style.plannerContainer}>
       <h3 className=""> My Weekly Plan </h3>
@@ -55,12 +62,13 @@ function PlannerPage() {
                 <BsFire className={Style.iconFire} />
                 {meal.calories} kcal
               </p>
-              <span className={Style.dietTag}>{meal.diet}</span>
+              <div className={Style.dietTag}>
+                {meal.diets.map((diet,index)=> (<span style={{background: dietColors[diet] }} key={index}>{diet}</span>))}</div>
               <button
                 className={`btn  ${Style.btnRemove}`}
                 onClick={() => handleAddMeals(meal)}
               >
-                Remove
+                X
               </button>
             </div>
           ))
