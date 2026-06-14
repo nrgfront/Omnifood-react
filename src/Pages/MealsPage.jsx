@@ -98,10 +98,10 @@ function MealsPage() {
             Vegan
           </button>
           <button
-            className={` btn ${Style.filterBtn} ${selectedDiet === "Vegetarian" ? Style.activeFilter : ""}`}
+            className={` btn ${Style.filterBtn} ${selectedDiet === "Vegeterian" ? Style.activeFilter : ""}`}
             onClick={() => setSelectedDiet("Vegeterian")}
           >
-            Vegeterian
+            Vegetarian
           </button>
           <button
             className={` btn ${Style.filterBtn} ${selectedDiet === "Gluten-Free" ? Style.activeFilter : ""}`}
