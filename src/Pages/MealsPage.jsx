@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import Style from "./MealsPage.module.css";
 import { Link } from "react-router-dom";
 
-// import meals from "../../data/meals";
 import MealCard from "../components/meals/MealCard";
 import PlannerCard from "../components/meals/PlannerCard";
 import MealContext, { MealProvider } from "../context/MealContext";
@@ -12,7 +11,7 @@ import { BsFire } from "react-icons/bs";
 import { LuPartyPopper } from "react-icons/lu";
 import { RiSearch2Line } from "react-icons/ri";
 import { FaRegFileAlt } from "react-icons/fa";
-// import formatedMeals from "../../data/formatedMeals";
+
 
 
 
@@ -80,14 +79,6 @@ function MealsPage() {
   const mealsLimit = planType;
   const progress = (selectedMeals.length / mealsLimit) * 100;
 
-
-// console.log(selectedDiet);
-// console.log(filteredMeals[0]?.diets);
-// console.log("all meals:", transformedMeals[0].length);
-// console.log("filtered meals:", filteredMeals.length)
-// console.log(filteredMeals.map((meal)=> meal.title))
-
-
 //   if (isLoading) return <p>Loading...</p>;
 // if (error) return <p>{error}</p>;
   return (
@@ -107,7 +98,7 @@ function MealsPage() {
             Vegan
           </button>
           <button
-            className={` btn ${Style.filterBtn} ${selectedDiet === "Vegeterian" ? Style.activeFilter : ""}`}
+            className={` btn ${Style.filterBtn} ${selectedDiet === "Vegetarian" ? Style.activeFilter : ""}`}
             onClick={() => setSelectedDiet("Vegeterian")}
           >
             Vegeterian
